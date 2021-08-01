@@ -1,0 +1,52 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    registry-fetch-interval-seconds: 10
+    instance-info-replication-interval-seconds: 10
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${spring.application.instance_id:${server.port}}
+    lease-renewal-interval-in-seconds: 5
+
+spring:
+  application:
+    name: com-cloud-web
+
+  # 是否允许HttpServletRequest属性覆盖(隐藏)控制器生成的同名模型属性。
+  freemarker:
+    allow-request-override: false
+    # 是否允许HttpSession属性覆盖(隐藏)控制器生成的同名模型属性。
+    allow-session-override: false
+    # 是否启用模板缓存。
+    cache: false
+    # 模板编码。
+    charset: UTF-8
+    # 是否检查模板位置是否存在。
+    check-template-location: true
+    # Content-Type value.
+    content-type: text/html
+    # 是否启用freemarker
+    enabled: true
+    # 设定所有request的属性在merge到模板的时候，是否要都添加到model中.
+    expose-request-attributes: false
+    # 是否在merge模板的时候，将HttpSession属性都添加到model中
+    expose-session-attributes: false
+    # 设定是否以springMacroRequestContext的形式暴露RequestContext给Spring’s macro library使用
+    expose-spring-macro-helpers: true
+    # 是否优先从文件系统加载template，以支持热加载，默认为true
+    prefer-file-system-access: true
+    # 设定模板的后缀.
+    suffix: .ftl
+    # 设定模板的加载路径，多个以逗号分隔，默认:
+    template-loader-path: classpath:/templates/
+    # 设定FreeMarker keys.
+    settings:
+      template_update_delay: 0
+      default_encoding: UTF-8
+      classic_compatible: true

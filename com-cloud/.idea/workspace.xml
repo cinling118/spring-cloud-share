@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7c35fc26-3b40-4217-919f-7d8e40f9ded2" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="D:\installHome\apache-maven-3.2.1" />
+        <option name="userSettingsFile" value="D:\installHome\apache-maven-3.2.1\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1w21PybFW79QLWMRPk17Q0Bgwax" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/com-cloud-gateway/src/main/resources" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
+  </component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\learnspace\com-cloud\com-cloud-gateway\src\main\resources" />
+      <recent name="E:\learnspace\com-cloud\com-cloud-service\src\main\resources" />
+      <recent name="E:\learnspace\com-cloud\com-cloud-service\src\main\java\com\cloud\service" />
+      <recent name="E:\learnspace\com-cloud\com-cloud-web\src\main\resources" />
+      <recent name="E:\learnspace\com-cloud\com-cloud-ribbon\src\main\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\learnspace\com-cloud\com-cloud-web\src\main\resources\templates\freemarkeer" />
+      <recent name="E:\learnspace\com-cloud\com-cloud-service\src\main\resources\mybatis\mapper" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.cloud.service" />
+      <recent name="com.cloud" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.cloud.web.service" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.ComCloudGatewayApplication">
+    <configuration name="ComCloudRibbonApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.cloud.ComCloudRibbonApplication" />
+      <module name="com-cloud-ribbon" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Generator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.cloud.service.Generator" />
+      <module name="com-cloud-service" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GeneratorCodeConfig (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.cloud.service.conf.GeneratorCodeConfig" />
+      <module name="com-cloud-service" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GeneratorCodeConfig" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.cloud.web.conf.GeneratorCodeConfig" />
+      <module name="com-cloud-web" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ComCloudGatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="com-cloud-gateway" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.cloud.gateway.ComCloudGatewayApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ComCloudRibbonApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="com-cloud-ribbon" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.cloud.ComCloudRibbonApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ComCloudServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="com-cloud-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.cloud.service.ComCloudServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ComCloudWebApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="com-cloud-web" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.cloud.web.ComCloudWebApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ComColudEurekaServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="com-colud-eureka-server" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.cloud.eureka.server.ComColudEurekaServerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.ComCloudRibbonApplication" />
+      <item itemvalue="Application.Generator" />
+      <item itemvalue="Application.GeneratorCodeConfig" />
+      <item itemvalue="Application.GeneratorCodeConfig (1)" />
+      <item itemvalue="Spring Boot.ComCloudRibbonApplication" />
+      <item itemvalue="Spring Boot.ComCloudServiceApplication" />
+      <item itemvalue="Spring Boot.ComCloudWebApplication" />
+      <item itemvalue="Spring Boot.ComColudEurekaServerApplication" />
+      <item itemvalue="Spring Boot.ComCloudGatewayApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ComCloudRibbonApplication" />
+        <item itemvalue="Application.GeneratorCodeConfig (1)" />
+        <item itemvalue="Application.GeneratorCodeConfig" />
+        <item itemvalue="Application.Generator" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7c35fc26-3b40-4217-919f-7d8e40f9ded2" name="Default Changelist" comment="" />
+      <created>1627641850612</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1627641850612</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/com-cloud-ribbon/src/test/java/com/cloud/ribbon/ComCloudRibbonApplicationTests.java</url>
+          <line>4</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="com-cloud-gateway" />
+        <module name="com-cloud-web" />
+        <module name="com-cloud-service" />
+        <module name="com-cloud-ribbon" />
+        <module name="com-colud-eureka-server" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="com-cloud" target="1.8" />
+      <module name="com-cloud-gateway" target="1.8" />
+      <module name="com-cloud-ribbon" target="1.8" />
+      <module name="com-cloud-service" target="1.8" />
+      <module name="com-cloud-web" target="1.8" />
+      <module name="com-colud-eureka-server" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="com-cloud" options="" />
+      <module name="com-cloud-gateway" options="" />
+      <module name="com-cloud-ribbon" options="" />
+      <module name="com-cloud-service" options="" />
+      <module name="com-cloud-web" options="" />
+      <module name="com-colud-eureka-server" options="" />
+    </option>
+  </component>
+</project>
