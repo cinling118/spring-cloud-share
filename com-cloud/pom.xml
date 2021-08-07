@@ -24,6 +24,7 @@
     </properties>
 
     <modules>
+        <module>com-cloud-redis</module>
         <module>com-cloud-eureka-server</module>
         <module>com-cloud-gateway</module>
         <module>com-cloud-ribbon</module>
@@ -54,6 +55,10 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>1.2.47</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
         </dependency>
 
         <dependency>
