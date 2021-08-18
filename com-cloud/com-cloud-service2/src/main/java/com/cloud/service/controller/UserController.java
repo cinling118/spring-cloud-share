@@ -31,7 +31,7 @@ public class UserController {
 
     @GetMapping("/findAllUser")
     public List<User> findAllUser(){
-        System.out.println("findAllUser for service1");
+        System.out.println("findAllUser for service2");
         return userService.findAllUser();
     }
 }

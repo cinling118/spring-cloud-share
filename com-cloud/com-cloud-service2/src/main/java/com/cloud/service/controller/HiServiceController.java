@@ -28,7 +28,7 @@ public class HiServiceController {
 //        User user = new User();
 //        user.setUserId(111L);
 //        user.setUserName("王五");
-        String str = "hi service1" + name + ",i am from port:" + port;
+        String str = "hi service2" + name + ",i am from port:" + port;
         Map<String, Object> map = new HashMap<>();
 //        map.put("user",user);
         map.put("str",str);
