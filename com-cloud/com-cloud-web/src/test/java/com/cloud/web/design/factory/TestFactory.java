@@ -1,7 +1,7 @@
 package com.cloud.web.design.factory;
 
 /**
- * 测试工厂模式
+ * 测试简单工厂模式
  */
 public class TestFactory {
 
