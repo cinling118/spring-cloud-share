@@ -29,7 +29,6 @@
         <module>com-cloud-gateway</module>
         <module>com-cloud-ribbon</module>
         <module>com-cloud-service</module>
-        <module>com-cloud-service2</module>
         <module>com-cloud-web</module>
         <module>com-cloud-websocket</module>
     </modules>
