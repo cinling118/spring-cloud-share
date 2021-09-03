@@ -1,5 +1,6 @@
 package com.cloud.web.other;
 
+import com.sun.xml.internal.ws.api.server.AbstractServerAsyncTransport;
 import org.junit.*;
 
 public class TestJunit {
@@ -23,7 +24,9 @@ public class TestJunit {
 
     @Test
     public void test2(){
-        Assert.assertEquals("111",new String("112"));
+//        Assert.assertEquals("111",new String("112"));
+        String message = "false";
+        Assert.assertEquals(message,"111",new String("112"));
         System.out.println("test2");
     }
 
