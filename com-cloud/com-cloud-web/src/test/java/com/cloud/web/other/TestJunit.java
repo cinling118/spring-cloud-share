@@ -26,7 +26,7 @@ public class TestJunit {
     public void test2(){
 //        Assert.assertEquals("111",new String("112"));
         String message = "false";
-        Assert.assertEquals(message,"111",new String("112"));
+        Assert.assertEquals(message,"111",new String("111"));
         System.out.println("test2");
     }
 

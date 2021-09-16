@@ -34,4 +34,11 @@ public class UserController {
         System.out.println("findAllUser for service1");
         return userService.findAllUser();
     }
+
+    @GetMapping("/test1")
+    public String test1(){
+        userService.findAllUser();
+        userService.test1();
+        return "success";
+    }
 }

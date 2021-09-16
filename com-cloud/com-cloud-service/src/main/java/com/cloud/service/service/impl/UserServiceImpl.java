@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,5 +26,20 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     @Override
     public List<User> findAllUser() {
         return userMapper.findAllUser();
+    }
+
+    @Override
+    public void test1() {
+        List<String> list = new ArrayList<String>();
+        //生产一个34M左右的List
+        int i = 0;
+        for (int j = 0; j < 1000000; j++) {
+            list.add(new String("我是中国人 我为中国骄傲"));
+        }
+        try {
+            Thread.sleep(20000);//让线程等待20秒
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
