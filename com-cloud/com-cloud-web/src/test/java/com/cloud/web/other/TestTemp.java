@@ -13,6 +13,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class TestTemp {
     private int num;
     private static int age;
+    protected volatile boolean testOnBorrow;
 
     static int getAge(){
      return age;
@@ -70,7 +71,14 @@ public class TestTemp {
             System.out.println(i);
         }
 
-        AtomicInteger integer = new AtomicInteger(10);
-        ReentrantLock lock = new ReentrantLock();
+//        AtomicInteger integer = new AtomicInteger(10);
+//        ReentrantLock lock = new ReentrantLock();
+
+        TestTemp temp =new TestTemp();
+        if (temp.testOnBorrow) {
+            System.out.println("is true");
+        } else {
+            System.out.println("is false");
+        }
     }
 }

@@ -13,16 +13,43 @@ server:
   port: 8762
   servlet:
     context-path: /
+  tomcat:
+    uri-encoding: UTF-8
+    #最小线程数
+    min-spare-threads: 20
+    #最大线程数
+    max-threads: 200
+    #最大链接数
+    max-connections: 300
+    #最大等待队列长度
+    accept-count: 100
+    #请求头最大长度kb
+    max-http-header-size: 1048576
+    #请请求体最大长度kb
+    #max-http-post-size: 2097152
+  #链接建立超时时间
+  connection-timeout: 12000
 
 spring:
   application:
     name: service-hi
   datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
+    #type: com.alibaba.druid.pool.DruidDataSource
+    type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/ssm?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: 123
+    hikari:
+      minimum-idle: 2
+      maximum-pool-size: 300
+      auto-commit: true
+      idle-timeout: 30000
+      pool-name: TestHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1 FROM DUAL
+
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
