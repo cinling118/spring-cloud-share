@@ -1,15 +1,17 @@
 package com.cloud.redis.serivce;
 
+import org.redisson.ScanResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.redis.core.Cursor;
+import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ScanOptions;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 @Service
@@ -417,6 +419,19 @@ public class RedisService {
             return 0;
         }
     }
+
+    public Set<String> scan(String matchKey) {
+        Set<String> keys = redisTemplate.execute((RedisCallback<Set<String>>) connection -> {
+            Set<String> keysTmp = new HashSet<>();
+            Cursor<byte[]> cursor = connection.scan(new ScanOptions.ScanOptionsBuilder().match("*" + matchKey + "*").count(1000).build());
+            while (cursor.hasNext()) {
+                keysTmp.add(new String(cursor.next()));
+            }
+            return keysTmp;
+        });
+        return keys;
+    }
+
 
     // ===============================list=================================
     /**
