@@ -1,13 +1,14 @@
 package com.cloud.service.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cloud.service.entity.User;
 import com.cloud.service.mapper.UserMapper;
 import com.cloud.service.service.IUserService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StopWatch;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -31,13 +32,19 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     }
 
     @Override
-    public void test1() {
+    public void test1() throws NoSuchFieldException, IllegalAccessException {
         List<String> list = new ArrayList<String>();
         //生产一个3.4M左右的List
         int i = 0;
         for (int j = 0; j < 100000; j++) {
             list.add(new String("我是中国人 我为中国骄傲"));
         }
+        //打印占用内存大小
+//        Field f = ArrayList.class.getDeclaredField("elementData");
+//        f.setAccessible(true);
+//        Object[] o = (Object[]) f.get(list);
+//        String result = "测试RAM结束，测试占用内存空间约为 : " + ((long)o.length * (long)"我是中国人 我为中国骄傲".length() * 2);
+//        System.out.println(result);
     }
 
     @Override
@@ -46,18 +53,26 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 //        for (int j = 0; j < 10000; j++) {
 //            sum +=j;
 //        }
-        StopWatch stopWatch = new StopWatch("查询、sleep(500)、再更新任务耗时");
-        stopWatch.start("任务一");
-        User user = userMapper.selectById(10000);
-        user.setUserDate(new Date());
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        userMapper.updateById(user);
-        stopWatch.stop();
-        System.err.println(stopWatch.prettyPrint());
+//        synchronized (UserServiceImpl.class){
+            StopWatch stopWatch = new StopWatch("查询、sleep(2500)、再更新任务耗时");
+            stopWatch.start("任务一");
+            User user = userMapper.selectById(10000);
+            user.setUserDate(new Date());
+            try {
+                Thread.sleep(2200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            List<String> list = new ArrayList<String>();
+            //生产一个3.4M左右的List
+            int i = 0;
+            for (int j = 0; j < 20000; j++) {
+                list.add(new String("我是中国人"));
+            }
+            userMapper.updateById(user);
+            stopWatch.stop();
+            System.err.println(stopWatch.prettyPrint());
+//        }
     }
 
     @Override

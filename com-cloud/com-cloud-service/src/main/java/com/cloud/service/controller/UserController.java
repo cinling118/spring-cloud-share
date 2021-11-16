@@ -3,6 +3,9 @@ package com.cloud.service.controller;
 
 import com.cloud.service.entity.User;
 import com.cloud.service.service.IUserService;
+import com.netflix.discovery.converters.jackson.EurekaXmlJacksonCodec;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.util.StopWatch;
@@ -23,6 +26,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/user")
 public class UserController {
+    private final static Logger logger = LoggerFactory.getLogger(UserController.class);
+
     @Autowired
     private IUserService userService;
 
@@ -40,6 +45,10 @@ public class UserController {
     @GetMapping("/findAllUser")
     public List<User> findAllUser(){
         System.out.println("findAllUser for service1");
+        logger.debug("测试logger.debug：访问findAllUser" );
+        logger.info("测试logger.info：访问findAllUser");
+        logger.error("测试logger.error：访问findAllUser" );
+        logger.warn("测试logger.warn：访问findAllUser" );
         return userService.findAllUser();//查询一次数据库，并返回
     }
 
@@ -49,7 +58,7 @@ public class UserController {
     }
 
     @GetMapping("/test1")
-    public String test1(){
+    public String test1() throws Exception {
         userService.findAllUser();//查询一次数据库
         userService.test1();//生产一个3.4M左右的list
 //        try {
@@ -61,7 +70,7 @@ public class UserController {
 
     @GetMapping("/test2")
     public String test2(){
-        userService.test2();//做1万次运算
+        userService.test2();
         return "success";
     }
 }

@@ -18,9 +18,9 @@ server:
     #最小线程数
     min-spare-threads: 20
     #最大线程数
-    max-threads: 200
+    max-threads: 400
     #最大链接数
-    max-connections: 300
+    max-connections: 500
     #最大等待队列长度
     accept-count: 100
     #请求头最大长度kb
@@ -37,14 +37,16 @@ spring:
     #type: com.alibaba.druid.pool.DruidDataSource
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/ssm?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3306/ssm?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: 123
+    #password: Chenzy861127@
     hikari:
       minimum-idle: 2
-      maximum-pool-size: 300
+      maximum-pool-size: 200
       auto-commit: true
-      idle-timeout: 30000
+      # 一个连接idle状态的最大时长（毫秒），超时则被释放（retired），缺省:10分钟
+      idle-timeout: 300000
       pool-name: TestHikariCP
       max-lifetime: 1800000
       connection-timeout: 30000
@@ -70,3 +72,6 @@ mybatis-plus:
       logic-not-delete-value: 1
       # 删除后
       logic-delete-value: 0
+
+logging:
+  config: classpath:log/logback-spring.xml
