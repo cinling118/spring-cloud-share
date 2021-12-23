@@ -9,9 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StopWatch;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * <p>
@@ -25,6 +23,9 @@ import java.util.List;
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
     @Autowired
     private UserMapper userMapper;
+    public static List<String> staticList = new ArrayList<>();
+
+    public static Map<Long, User> userMap = new HashMap<>();
 
     @Override
     public List<User> findAllUser() {
@@ -32,12 +33,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     }
 
     @Override
-    public void test1() throws NoSuchFieldException, IllegalAccessException {
+    public void test1() throws Exception {
         List<String> list = new ArrayList<String>();
         //生产一个3.4M左右的List
         int i = 0;
         for (int j = 0; j < 100000; j++) {
-            list.add(new String("我是中国人 我为中国骄傲"));
+            list.add(new String("绝对不可能，我本地没有问题！"));
         }
         //打印占用内存大小
 //        Field f = ArrayList.class.getDeclaredField("elementData");
@@ -67,7 +68,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             //生产一个3.4M左右的List
             int i = 0;
             for (int j = 0; j < 20000; j++) {
-                list.add(new String("我是中国人"));
+                list.add(new String("我是程序猿"));
             }
             userMapper.updateById(user);
             stopWatch.stop();
@@ -84,5 +85,15 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         userMapper.insert(user);
 //        System.out.println(2/0);//测试事务回滚
         return user.getUserId();
+    }
+    @Override
+    public List<User> findAllUser2() {
+        try {
+            this.test1();//生产一个3.4M左右的list
+            Thread.sleep(2000);
+        } catch (Exception e) {
+        } finally {
+        }
+        return userMapper.findAllUser();
     }
 }

@@ -1,5 +1,7 @@
 package com.cloud.web.service;
 
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
 import com.cloud.web.entity.User;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,4 +21,9 @@ public class UserService {
         return (List<User>) entity.getBody();
     }
 
+    public User getUser(long userId) {
+        ResponseEntity<Object> entity = restTemplate.getForEntity("http://COM-CLOUD-GATEWAY/user/getUser?userId=" + userId, Object.class);
+        String json = JSONObject.toJSONString(entity.getBody());
+        return JSONObject.parseObject(json, User.class);
+    }
 }

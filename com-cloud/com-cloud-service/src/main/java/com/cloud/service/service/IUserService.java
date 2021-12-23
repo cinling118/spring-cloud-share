@@ -15,7 +15,9 @@ import java.util.List;
  */
 public interface IUserService extends IService<User> {
     public List<User> findAllUser();
-    public void test1() throws NoSuchFieldException, IllegalAccessException;
+    public void test1() throws Exception;
     public void test2();
     public long add(String userName, String passWord);
+
+    public List<User> findAllUser2();
 }

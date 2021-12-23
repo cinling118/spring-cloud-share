@@ -25,7 +25,7 @@ public class RedisService {
      * 指定缓存失效时间
      * @param key 键
      * @param time 时间(秒)
-     * @return
+     * @returnRedisService
      */
     public boolean expire(String key, long time) {
         try {
@@ -96,6 +96,10 @@ public class RedisService {
      */
     public Object get(String key) {
         return key == null ? null : redisTemplate.opsForValue().get(key);
+    }
+
+    public List<Object> mget(List<String> keyList) {
+        return keyList == null ? null : redisTemplate.opsForValue().multiGet(keyList);
     }
 
     /**

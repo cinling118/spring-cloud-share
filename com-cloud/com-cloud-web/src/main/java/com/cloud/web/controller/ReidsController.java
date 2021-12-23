@@ -1,11 +1,14 @@
 package com.cloud.web.controller;
 
 import com.cloud.redis.serivce.RedisService;
+import com.cloud.web.entity.User;
+import com.cloud.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -13,6 +16,8 @@ import java.util.List;
 public class ReidsController {
     @Autowired
     private RedisService redisService;
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value = "/set")
     public String set(String key, String value){
@@ -39,5 +44,26 @@ public class ReidsController {
     @RequestMapping(value = "/sSet")
     public long sSet(String key, String value){
         return redisService.sSet(key, value);
+    }
+
+    @RequestMapping(value = "/setUser")
+    public String setUser(long userId){
+        User user = userService.getUser(userId);
+        redisService.set(userId + "", user);
+        return "redis添加成功：key:" + userId;
+    }
+
+    @RequestMapping(value = "/getUser")
+    public User getUser(long userId){
+        return (User)redisService.get(userId + "");
+    }
+
+    @RequestMapping(value = "/mgetUser")
+    public List<Object> mgetUser(String userIdStr){
+        List<String> keyList = new ArrayList<String>();
+        for (String userId : userIdStr.split(",")) {
+            keyList.add(userId);
+        }
+        return redisService.mget(keyList);
     }
 }

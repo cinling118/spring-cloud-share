@@ -2,6 +2,7 @@ package com.cloud.web.entity;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -13,7 +14,7 @@ import java.util.Date;
  * @since 2021-08-01
  */
 @Data
-public class User {
+public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
