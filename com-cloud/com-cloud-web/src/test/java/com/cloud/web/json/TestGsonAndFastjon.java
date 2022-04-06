@@ -31,6 +31,7 @@ public class TestGsonAndFastjon {
         user.setId(1001L);
         user.setName("张三");
         user.setCreateTime(new Date());
+//        JacksonUtils.toJSONString(user);
         long currTime = System.currentTimeMillis();
         ObjectMapper objectMapper = new ObjectMapper();
         for (int i = 0; i < 10000; i++) {

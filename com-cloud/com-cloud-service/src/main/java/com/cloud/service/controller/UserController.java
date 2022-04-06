@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,17 +34,18 @@ public class UserController {
     @Autowired
     private IUserService userService;
 
-    @Cacheable(value = "user",key = "#userId") //-- 本地缓存
+    /**
+     * 查询数据库
+    */
     @GetMapping("/getUser")
     public User getUser(long userId){
-//        StopWatch stopWatch = new StopWatch("查询数据库任务耗时");
-//        stopWatch.start("任务一");
         User user = userService.getById(userId);
-//        stopWatch.stop();
-//        System.err.println(stopWatch.prettyPrint());
         return user;
     }
 
+    /**
+     * 缓存到HashMap
+    */
     @GetMapping("/getUser2")
     public User getUser2(long userId){
         User user = UserServiceImpl.userMap.get(userId);
@@ -51,6 +53,16 @@ public class UserController {
             user = userService.getById(userId);
             UserServiceImpl.userMap.put(user.getUserId(), user);
         }
+        return user;
+    }
+
+    /**
+     * Caffeine缓存
+    */
+    @Cacheable(value = "user",key = "#userId")
+    @GetMapping("/getUser3")
+    public User getUser3(long userId){
+        User user = userService.getById(userId);
         return user;
     }
 
@@ -72,9 +84,15 @@ public class UserController {
     @GetMapping("/test1")
     public String test1() throws Exception {
         userService.findAllUser();//查询一次数据库
-        userService.test1();//生产一个3.4M左右的list
+//        userService.test1();//生产一个3.4M左右的list
+        List<String> list = new ArrayList<String>();
+        //生产一个3.4M左右的List
+        int i = 0;
+        for (int j = 0; j < 100000; j++) {
+            list.add(new String("绝对不可能，我本地没有问题！"));
+        }
         try {
-            Thread.sleep(200);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
         } finally {
         }

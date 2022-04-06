@@ -2,9 +2,99 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.cloud.service.mapper.UserMapper">
+
+    <sql id="Base_Column_List">
+        userId, userName, userPass, userDate
+    </sql>
+
     <!-- 查找用户信息 -->
     <select id="findAllUser" resultType="com.cloud.service.entity.User">
-        select * from user
+        select
+        <include refid="Base_Column_List"/>
+        from t_user
     </select>
 
+    <!-- 单个insert-->
+    <insert id="insert" parameterType="com.cloud.service.entity.User">
+        insert into t_user(userId, userName, userPass, userDate) values
+            (
+            #{userId},
+            #{userName},
+            #{userPass},
+            #{userDate}
+            )
+    </insert>
+
+    <!-- 批量insert-->
+    <insert id="batchInsert" parameterType="java.util.List">
+        insert into t_user(userId, userName, userPass, userDate)  values
+        <foreach collection="list" item="item" index="index" separator="," >
+            (
+            #{item.userId},
+            #{item.userName},
+            #{item.userPass},
+            #{item.userDate}
+            )
+        </foreach>
+    </insert>
+
+    <!-- 单个update-->
+    <update id="updateUserById" parameterType="com.cloud.service.entity.User">
+        update t_user
+        <set>
+            userName = #{userName}
+            ,userPass = #{userPass}
+            ,userDate = #{userDate}
+        </set>
+        where userId = #{userId}
+    </update>
+
+    <!-- 批量update-->
+    <update id="batchUpdate" parameterType="java.util.List">
+        update t_user set
+        userName =
+        <foreach collection="list" item="item" separator=" " open="case userId" close="end">
+            when #{item.userId} then #{item.userName}
+        </foreach>
+        ,userPass =
+        <foreach collection="list" item="item" separator=" " open="case userId" close="end">
+            when #{item.userId} then #{item.userPass}
+        </foreach>
+        where userId in
+        <foreach collection="list" item="item" separator="," open="(" close=")">
+            #{item.userId}
+        </foreach>
+    </update>
+
+    <!-- 单个查询 -->
+    <select id="selectUserById" resultType="com.cloud.service.entity.User"
+            parameterType="long">
+        select userId, userName, userPass, userDate from t_user
+        where userId = #{userId,jdbcType=DECIMAL}
+    </select>
+
+    <!-- 批量查询 -->
+    <select id="selectByIdList" resultType="com.cloud.service.entity.User"
+            parameterType="java.util.List">
+        select userId, userName, userPass, userDate from t_user
+        where userId in
+        <foreach collection="list" item="userId" separator="," open="(" close=")">
+            #{userId}
+        </foreach>
+    </select>
+
+    <!-- 单个删除 -->
+    <delete id="deleteById" parameterType="long">
+        delete from t_user
+        where userId = #{userId,jdbcType=DECIMAL}
+    </delete>
+
+    <!-- 批量删除 -->
+    <delete id="deleteByIdList" parameterType="java.util.List">
+        delete from t_user
+        where userId in
+        <foreach collection="list" item="userId" separator="," open="(" close=")">
+            #{userId}
+        </foreach>
+    </delete>
 </mapper>

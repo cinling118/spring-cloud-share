@@ -34,11 +34,12 @@ import java.util.concurrent.*;
  * 原文链接：https://blog.csdn.net/WoAiBianCheng123abc/article/details/82828980
  */
 public class TestThreadPoolExecutor {
-    private static ThreadPoolExecutor threadPoolExecutor = null;
+    public static ThreadPoolExecutor threadPoolExecutor = null;
 
     static {
-        BlockingQueue<Runnable> workQueue = new LinkedBlockingQueue<Runnable>();
-        threadPoolExecutor = new ThreadPoolExecutor(10,10, 60, TimeUnit.SECONDS,workQueue);
+        threadPoolExecutor=new ThreadPoolExecutor(5, 10, 60, TimeUnit.SECONDS,
+                        new LinkedBlockingQueue<Runnable>(50),
+                        new ThreadPoolExecutor.CallerRunsPolicy());
         threadPoolExecutor.allowCoreThreadTimeOut(true);
     }
 }

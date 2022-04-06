@@ -17,4 +17,14 @@ import java.util.List;
 @Mapper
 public interface UserMapper extends BaseMapper<User> {
     public List<User> findAllUser();
+
+    public void updateUserById(User user);
+    public User selectUserById(long userId);
+    public void batchUpdate(List<User> list);
+
+    public void batchInsert(List<User> list);
+
+    public List<User> selectByIdList(List<Long> list);
+
+    public void deleteByIdList(List<Long> list);
 }

@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StopWatch;
 
-import java.lang.reflect.Field;
 import java.util.*;
 
 /**
@@ -40,12 +39,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         for (int j = 0; j < 100000; j++) {
             list.add(new String("绝对不可能，我本地没有问题！"));
         }
-        //打印占用内存大小
-//        Field f = ArrayList.class.getDeclaredField("elementData");
-//        f.setAccessible(true);
-//        Object[] o = (Object[]) f.get(list);
-//        String result = "测试RAM结束，测试占用内存空间约为 : " + ((long)o.length * (long)"我是中国人 我为中国骄傲".length() * 2);
-//        System.out.println(result);
     }
 
     @Override
@@ -95,5 +88,121 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         } finally {
         }
         return userMapper.findAllUser();
+    }
+
+
+    /**
+     * 优化前：循环insert
+    */
+    public void forInsert(List<User> list){
+        for (User user : list) {
+            userMapper.insert(user);
+        }
+    }
+
+    /**
+     * 优化后：批量insert
+    */
+    public void batchInsert(List<User> list){
+        userMapper.batchInsert(list);
+    }
+
+    /**
+     * 优化前：循环update
+     */
+    public void forUpdate(List<User> list){
+        for (User user : list) {
+            userMapper.updateUserById(user);
+        }
+    }
+
+    /**
+     * 优化后：批量update
+     */
+    public void batchUpdate(List<User> list){
+        userMapper.batchUpdate(list);
+    }
+
+    /**
+     * 优化前：循环查询
+     */
+    public List<User> forSelect(List<Long> userIdList){
+        List<User> userList = new ArrayList<>();
+        for (Long userId : userIdList) {
+            userList.add(userMapper.selectUserById(userId));
+        }
+        return userList;
+    }
+
+    /**
+     * 优化后：批量查询
+     */
+    public List<User> selectByIdList(List<Long> userIdList){
+        return userMapper.selectByIdList(userIdList);
+    }
+
+    /**
+     * 优化前：循环删除
+     */
+    public void forDelete(List<Long> userIdList){
+        for (Long userId : userIdList) {
+            userMapper.deleteById(userId);
+        }
+    }
+
+    /**
+     * 优化后：批量查询
+     */
+    public void deleteByIdList(List<Long> userIdList){
+        userMapper.deleteByIdList(userIdList);
+    }
+
+    @Override
+    public List<User> test11() {
+        //----生产一个3.4M左右的List-begin---
+        List<String> list = new ArrayList<String>();
+        int i = 0;
+        for (int j = 0; j < 100000; j++) {
+            list.add(new String("绝对不可能，我本地没有问题！"));
+        }
+        list= null;
+        //----生产一个3.4M左右的List-end---
+        try {
+            Thread.sleep(1000);//模拟查询数据：1秒
+        } catch (Exception e) {
+        }
+        List<Long> userIdList = new ArrayList<>();
+        for (long j = 21;j<=30;j++) {
+            userIdList.add(j);
+        }
+        return userMapper.selectByIdList(userIdList);
+    }
+
+    /**
+     * 代码优化：
+    */
+    @Override
+    public List<User> test22() {
+        this.testJVM();//生产一个3.4M左右的list
+        try {
+            Thread.sleep(1000);//模拟查询数据：1秒
+        } catch (Exception e) {
+        }
+        List<Long> userIdList = new ArrayList<>();
+        for (long j = 21;j<=30;j++) {
+            userIdList.add(j);
+        }
+        return userMapper.selectByIdList(userIdList);
+    }
+
+    /**
+     * 生产一个3.4M左右的List
+    */
+    private void testJVM(){
+        List<String> list = new ArrayList<String>();
+        int i = 0;
+        for (int j = 0; j < 100000; j++) {
+            list.add(new String("绝对不可能，我本地没有问题！"));
+        }
     }
 }

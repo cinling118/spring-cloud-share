@@ -11,8 +11,7 @@ import org.springframework.context.annotation.ImportResource;
 @SpringBootApplication
 @MapperScan(value = {"com.cloud.service.mapper"})
 @EnableEurekaClient
-@ImportResource("classpath:transaction.xml")
-public class ComCloudServiceApplication {
+@ImportResource("classpath:transaction.xml")public class ComCloudServiceApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ComCloudServiceApplication.class, args);

@@ -20,4 +20,15 @@ public interface IUserService extends IService<User> {
     public long add(String userName, String passWord);
 
     public List<User> findAllUser2();
+    public void forInsert(List<User> list);
+    public void batchInsert(List<User> list);
+    public void forUpdate(List<User> list);
+    public void batchUpdate(List<User> list);
+    public List<User> forSelect(List<Long> userIdList);
+    public List<User> selectByIdList(List<Long> userIdList);
+    public void forDelete(List<Long> userIdList);
+    public void deleteByIdList(List<Long> userIdList);
+
+    public List<User> test11();
+    public List<User> test22();
 }
